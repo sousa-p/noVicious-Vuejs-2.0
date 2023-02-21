@@ -1,0 +1,59 @@
+<template>
+  <ModalAddNota
+  v-if="showModalAddNota"
+  :addNota="addNota"
+  @close="showModalAddNota = false"
+  />
+  <div class="superacao">
+    <div class="header_superacao">
+      <h1>{{ superacao.nome }}</h1>
+      <button @click="showModalAddNota = true">+</button>
+    </div>
+    <NotaComponent
+      v-for="(nota,i) in superacao.notas"
+      :key="i"
+      :nota="nota"
+      @excluirNota="excluirNota(i)"
+    />
+  </div>
+</template>
+
+<script>
+import { useRoute } from 'vue-router'
+import NotaComponent from '@/components/Nota.vue'
+import ModalAddNota from '@/components/ModalAddNota.vue'
+export default {
+  name: 'SuperacaoView',
+  components: {
+    NotaComponent,
+    ModalAddNota
+  },
+  data () {
+    return {
+      showModalAddNota: false
+    }
+  },
+  props: ['superacoes'],
+  created () {
+    const route = useRoute()
+    this.superacao = this.superacoes[route.params.id]
+  },
+  watch: {
+    $route: function (to, from) {
+      this.superacao = this.superacoes[to.params.id]
+    }
+  },
+  methods: {
+    excluirNota (i) {
+      this.superacao.notas.splice(i, 1)
+    },
+    addNota (mensagem) {
+      const data = new Date()
+      this.superacao.notas.push({
+        data: `${String(data.getDate()).padStart(2, '0')}/${String(data.getMonth() + 1).padStart(2, '0')}/${data.getFullYear()}`,
+        mensagem: mensagem
+      })
+    }
+  }
+}
+</script>

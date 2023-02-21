@@ -1,6 +1,13 @@
 <template>
   <div class="Sidebar">
-    <h1>Sidebar</h1>
+    <button @click="addSuperacao; $emit('addSuperacao')">Add Superacao</button>
+    <router-link
+    v-for="(superacao, i) in superacoes"
+    :key="i"
+    :to="`/superacao/${i}`"
+    >
+      <p>{{superacao.nome}}</p>
+    </router-link>
   </div>
 </template>
 
@@ -12,6 +19,7 @@
 
 <script>
 export default {
-  name: 'SidebarComponent'
+  name: 'SidebarComponent',
+  props: ['superacoes']
 }
 </script>

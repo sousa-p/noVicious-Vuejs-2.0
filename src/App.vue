@@ -1,4 +1,9 @@
 <template>
+  <ModalAddSuperacao
+  v-if="showModalAddSuperacao"
+  @close="showModalAddSuperacao = false"
+  :addSuperacao="addSuperacao"
+  />
   <header>
     <nav>
       <a href="#">NoVicious</a>
@@ -6,8 +11,14 @@
     </nav>
   </header>
   <main>
-    <SidebarComponent />
-    <router-view/>
+    <SidebarComponent
+    @addSuperacao="showModalAddSuperacao = true"
+    :superacoes="superacoes"
+    :addSuperacao="addSuperacao"
+    />
+    <router-view
+    :superacoes="superacoes"
+    />
   </main>
   <footer>
     <p id="credito">Desenvolvido por Pedro S.</p>
@@ -48,9 +59,37 @@ main
 
 <script>
 import SidebarComponent from '@/components/Sidebar.vue'
+import ModalAddSuperacao from '@/components/ModalAddSuperacao.vue'
 export default {
   components: {
-    SidebarComponent
+    SidebarComponent,
+    ModalAddSuperacao
+  },
+  data () {
+    return {
+      superacoes: [
+        {
+          nome: 'Ir para academia',
+          notas: [
+            {
+              data: '21/02/2023',
+              mensagem: 'Foi bom'
+            }
+          ],
+          superada: false
+        }
+      ],
+      showModalAddSuperacao: false
+    }
+  },
+  methods: {
+    addSuperacao (nomeSuperacao) {
+      this.superacoes.push({
+        nome: nomeSuperacao,
+        notas: [],
+        superada: false
+      })
+    }
   }
 }
 </script>
