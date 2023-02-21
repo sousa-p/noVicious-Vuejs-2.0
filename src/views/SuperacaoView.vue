@@ -9,7 +9,13 @@
       <h1>{{ superacao.nome }}</h1>
       <button @click="showModalAddNota = true">+</button>
     </div>
+    <p
+      v-if="superacao.notas.length === 0"
+    >
+      Não há notas nesta superação. Que tal começar com uma?
+    </p>
     <NotaComponent
+      v-else
       v-for="(nota,i) in superacao.notas"
       :key="i"
       :nota="nota"
