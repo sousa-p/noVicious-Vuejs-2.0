@@ -12,9 +12,9 @@
   </header>
   <main>
     <SidebarComponent
-    @addSuperacao="showModalAddSuperacao = true"
-    :superacoes="superacoes"
-    :addSuperacao="addSuperacao"
+      @showModalAddSuperacao="showModalAddSuperacao = true"
+      :superacoes="superacoes"
+      :removeSuperacao="removeSuperacao"
     />
     <router-view
     :superacoes="superacoes"
@@ -89,6 +89,10 @@ export default {
         notas: [],
         superada: false
       })
+    },
+    removeSuperacao (i) {
+      this.superacoes.splice(i, 1)
+      this.$router.replace('/')
     }
   }
 }

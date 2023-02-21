@@ -1,13 +1,13 @@
 <template>
   <div class="Sidebar">
-    <button @click="addSuperacao; $emit('addSuperacao')">Add Superacao</button>
-    <router-link
-    v-for="(superacao, i) in superacoes"
-    :key="i"
-    :to="`/superacao/${i}`"
+    <button @click="$emit('showModalAddSuperacao')">Add Superacao</button>
+    <div
+      v-for="(superacao, i) in superacoes"
+      :key="i"
     >
-      <p>{{superacao.nome}}</p>
-    </router-link>
+      <router-link :to="`/superacao/${i}`">{{superacao.nome}}</router-link>
+      <button @click="removeSuperacao(i)">X</button>
+    </div>
   </div>
 </template>
 
@@ -20,6 +20,6 @@
 <script>
 export default {
   name: 'SidebarComponent',
-  props: ['superacoes']
+  props: ['superacoes', 'removeSuperacao']
 }
 </script>
