@@ -67,19 +67,16 @@ export default {
   },
   data () {
     return {
-      superacoes: [
-        {
-          nome: 'Ir para academia',
-          notas: [
-            {
-              data: '21/02/2023',
-              mensagem: 'Foi bom'
-            }
-          ],
-          superada: false
-        }
-      ],
+      superacoes: (localStorage.getItem('superacoes')) ? JSON.parse(localStorage.getItem('superacoes')) : [],
       showModalAddSuperacao: false
+    }
+  },
+  watch: {
+    superacoes: {
+      handler (to) {
+        localStorage.setItem('superacoes', JSON.stringify(to))
+      },
+      deep: true
     }
   },
   methods: {
