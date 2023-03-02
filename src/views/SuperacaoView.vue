@@ -7,7 +7,7 @@
   <div class="superacao">
     <div class="header_superacao">
       <h1>{{ superacao.nome }}</h1>
-      <button @click="showModalAddNota = true">+</button>
+      <router-link :to="`/`">Voltar</router-link>
     </div>
     <p
       v-if="superacao.notas.length === 0"
@@ -22,7 +22,12 @@
       @excluirNota="excluirNota(i)"
     />
   </div>
+  <button id="addNota" @click="showModalAddNota = true">Adicionar</button>
 </template>
+
+<style lang="sass">
+
+</style>
 
 <script>
 import { useRoute } from 'vue-router'
