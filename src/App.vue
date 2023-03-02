@@ -31,11 +31,11 @@ $shadow: 0px 0px 10px rgba(0,0,0,0.5)
 #app
   width: 100vw
   height: 100vh
+  color: $black
 
 main
   background: #eef5fb
   height: 100%
-  color: $black
   display: flex
 </style>
 

@@ -21,12 +21,17 @@
       :nota="nota"
       @excluirNota="excluirNota(i)"
     />
+    <button id="addNota" @click="showModalAddNota = true">Adicionar</button>
   </div>
-  <button id="addNota" @click="showModalAddNota = true">Adicionar</button>
 </template>
 
 <style lang="sass">
-
+.superacao
+  width: 100%
+  max-height: 100%
+  overflow: auto
+  display: flex
+  flex-direction: column
 </style>
 
 <script>
