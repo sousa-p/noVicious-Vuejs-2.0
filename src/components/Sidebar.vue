@@ -1,25 +1,33 @@
 <template>
   <div class="Sidebar">
-    <button @click="$emit('showModalAddSuperacao')">Add Superacao</button>
-    <div
-      v-for="(superacao, i) in superacoes"
-      :key="i"
-    >
-      <router-link :to="`/superacao/${i}`">{{superacao.nome}}</router-link>
-      <button @click="removeSuperacao(i)">X</button>
+    <p id="logo">No vicious</p>
+    <p>
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXX
+    </p>
+    <div>
+      <p>
+        {{
+          superacoes.filter((superacao) => {superacao.superada}).length
+        }} Superações
+      </p>
     </div>
   </div>
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 .Sidebar
-  width: 20%
-  background: #7a9e9f
+  width: 22.5%
+  background: #12103f
+
+p
+  color: #fff
 </style>
 
 <script>
 export default {
   name: 'SidebarComponent',
-  props: ['superacoes', 'removeSuperacao']
+  props: ['superacoes']
 }
 </script>

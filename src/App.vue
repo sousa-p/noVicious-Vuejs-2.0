@@ -4,28 +4,20 @@
   @close="showModalAddSuperacao = false"
   :addSuperacao="addSuperacao"
   />
-  <header>
-    <nav>
-      <a href="#">NoVicious</a>
-      <router-link to="/">Home</router-link> |
-    </nav>
-  </header>
   <main>
     <SidebarComponent
+      :superacoes="superacoes"
+    />
+    <router-view
       @showModalAddSuperacao="showModalAddSuperacao = true"
       :superacoes="superacoes"
       :removeSuperacao="removeSuperacao"
-    />
-    <router-view
-    :superacoes="superacoes"
+
     />
   </main>
-  <footer>
-    <p id="credito">Desenvolvido por Pedro S.</p>
-  </footer>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 $header-footer-altura: 65px
 $black: #212227
 $shadow: 0px 0px 10px rgba(0,0,0,0.5)
@@ -34,27 +26,16 @@ $shadow: 0px 0px 10px rgba(0,0,0,0.5)
   padding: 0
   margin: 0
   box-sizing: border-box
-  color: $black
   font-family: 'Courier New', Courier, monospace
-
 #app
   width: 100vw
   height: 100vh
 
-header, main, footer
-  width: 100%
-  display: flex
-
-header,footer
-  height: $header-footer-altura
-  align-items: center
-  padding: 0 25px
-  box-shadow: $shadow
-  background: #4f6367
-
 main
   background: #eef5fb
-  height: calc(100% - $header-footer-altura*2)
+  height: 100%
+  color: $black
+  display: flex
 </style>
 
 <script>
