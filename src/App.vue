@@ -17,7 +17,7 @@
   </main>
 </template>
 
-<style lang="sass" scoped>
+<style lang="sass">
 $header-footer-altura: 65px
 $black: #212227
 $shadow: 0px 0px 10px rgba(0,0,0,0.5)
@@ -27,15 +27,22 @@ $shadow: 0px 0px 10px rgba(0,0,0,0.5)
   margin: 0
   box-sizing: border-box
   font-family: 'Courier New', Courier, monospace
+
 #app
   width: 100vw
   height: 100vh
+  color: $black
 
 main
   background: #eef5fb
   height: 100%
-  color: $black
   display: flex
+
+.wrapper
+  width: 100%
+  padding: 0 5%
+  display: flex
+  flex-direction: column
 </style>
 
 <script>

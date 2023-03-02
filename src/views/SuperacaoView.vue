@@ -1,31 +1,39 @@
 <template>
-  <ModalAddNota
-  v-if="showModalAddNota"
-  :addNota="addNota"
-  @close="showModalAddNota = false"
-  />
-  <div class="superacao">
-    <div class="header_superacao">
-      <h1>{{ superacao.nome }}</h1>
-      <router-link :to="`/`">Voltar</router-link>
-    </div>
-    <p
-      v-if="superacao.notas.length === 0"
-    >
-      Não há notas nesta superação. Que tal começar com uma?
-    </p>
-    <NotaComponent
-      v-else
-      v-for="(nota,i) in superacao.notas"
-      :key="i"
-      :nota="nota"
-      @excluirNota="excluirNota(i)"
+  <div class="wrapper">
+    <ModalAddNota
+    v-if="showModalAddNota"
+    :addNota="addNota"
+    @close="showModalAddNota = false"
     />
+    <div class="superacao">
+      <div class="header_superacao">
+        <h1>{{ superacao.nome }}</h1>
+        <router-link :to="`/`">Voltar</router-link>
+      </div>
+      <p
+        v-if="superacao.notas.length === 0"
+      >
+        Não há notas nesta superação. Que tal começar com uma?
+      </p>
+      <NotaComponent
+        v-else
+        v-for="(nota,i) in superacao.notas"
+        :key="i"
+        :nota="nota"
+        @excluirNota="excluirNota(i)"
+      />
+      <button id="addNota" @click="showModalAddNota = true">Adicionar</button>
+    </div>
   </div>
-  <button id="addNota" @click="showModalAddNota = true">Adicionar</button>
 </template>
 
 <style lang="sass">
+.superacao
+  width: 100%
+  max-height: 100%
+  overflow: auto
+  display: flex
+  flex-direction: column
 
 </style>
 
