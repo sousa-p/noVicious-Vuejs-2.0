@@ -10,7 +10,7 @@
         <input class="input" type="text" v-model="nomeSuperacao" name="nomeSuperacao"/>
         <label>Cor:</label>
         <input class="input" type="color" v-model="corSuperacao" name="corSuperacao"/>
-        <button id="btn_add-superacao" @click.prevent="addSuperacao(nomeSuperacao, cor); $emit('close')">Criar</button>
+        <button id="btn_add-superacao" @click.prevent="addSuperacao(nomeSuperacao, corSuperacao); $emit('close')">Criar</button>
       </form>
     </div>
   </div>
@@ -88,7 +88,7 @@ export default {
   data () {
     return {
       nomeSuperacao: '',
-      cor: ''
+      corSuperacao: '#000000'
     }
   }
 }

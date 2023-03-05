@@ -68,13 +68,14 @@ export default {
     }
   },
   methods: {
-    addSuperacao (nomeSuperacao, cor) {
+    addSuperacao (nomeSuperacao, corSuperacao) {
       this.superacoes.push({
         nome: nomeSuperacao,
         notas: [],
         superada: false,
-        cor: cor
+        cor: corSuperacao
       })
+      console.log(this.superacoes)
     },
     removeSuperacao (i) {
       this.superacoes.splice(i, 1)
