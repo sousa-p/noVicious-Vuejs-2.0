@@ -18,7 +18,8 @@
 
 <style lang="sass">
 .Sidebar
-  width: 22.5%
+  width: 25%
+  padding: 10px
   gap: 75px
   display: flex
   flex-direction: column

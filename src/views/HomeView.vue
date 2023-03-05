@@ -6,13 +6,13 @@
     >
       Não há superações. Que tal começar a mudar sua vida?
     </p>
-    <router-link :to="`/superacao/${i}`" class="superacao_card"
+    <div class="superacao_card" :style="`border-left-color: ${superacao.cor}`"
       v-for="(superacao, i) in superacoes"
       :key="i"
     >
-      <p class="superacao_card__nome">{{superacao.nome}}</p>
+      <router-link :to="`/superacao/${i}`" class="superacao_card__nome">{{superacao.nome}}</router-link>
       <button @click="removeSuperacao(i)" class="superacao__remove">X</button>
-    </router-link>
+    </div>
     <button id="btn__superacao" @click="$emit('showModalAddSuperacao')">Adicionar</button>
   </div>
 </template>
@@ -32,6 +32,8 @@
   background: #fff
   width: 100%
   height: 75px
+  border-left-width: 15px
+  border-left-style: solid
 
 #btn__superacao
   width: 175px
@@ -45,6 +47,11 @@
   color: #fff
   font-weight: bolder
   text-transform: uppercase
+
+.superacao__remove
+  cursor: pointer
+  background: transparent
+  border: none
 </style>
 
 <script>
