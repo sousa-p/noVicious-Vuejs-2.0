@@ -43,6 +43,12 @@ main
   padding: 0 5%
   display: flex
   flex-direction: column
+
+@media (max-width: 840px)
+  h1
+    text-align: center
+  main
+    display: block
 </style>
 
 <script>
@@ -75,7 +81,6 @@ export default {
         superada: false,
         cor: corSuperacao
       })
-      console.log(this.superacoes)
     },
     removeSuperacao (i) {
       this.superacoes.splice(i, 1)

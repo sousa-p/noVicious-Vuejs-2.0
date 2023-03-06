@@ -19,7 +19,8 @@
 <style lang="sass">
 .Sidebar
   width: 25%
-  padding: 10px
+  padding: 25px
+  min-width: 300px
   gap: 75px
   display: flex
   flex-direction: column
@@ -47,6 +48,16 @@
 
   p
     font-size: 1.1em
+
+@media (max-width: 840px)
+  .Sidebar
+    width: 100%
+    height: 200px
+    gap: 0px
+    justify-content: space-around
+
+  #wrapper_superacoes
+    padding: 15px 30px
 </style>
 
 <script>

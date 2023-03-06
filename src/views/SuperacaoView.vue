@@ -17,12 +17,11 @@
       </p>
       <NotaComponent
         v-else
-        v-for="(nota,i) in superacao.notas"
-        :key="i"
-        :nota="nota"
-        @excluirNota="excluirNota(i)"
+        :key="idUltimaNota"
+        :nota="notaAtual"
+        @excluirNota="excluirNota(idUltimaNota)"
       />
-      <button id="addNota" @click="showModalAddNota = true">Adicionar</button>
+      <button class="btn__add" @click="showModalAddNota = true">Adicionar</button>
     </div>
   </div>
 </template>
@@ -55,11 +54,24 @@ export default {
   props: ['superacoes'],
   created () {
     const route = useRoute()
-    this.superacao = this.superacoes[route.params.id]
+    const idSuperacao = route.params.id
+    this.superacao = this.superacoes[idSuperacao]
+    this.idUltimaNota = this.superacoes[idSuperacao].notas.length - 1
+    this.notaAtual = this.notaAtual = this.superacoes[idSuperacao].notas[this.idUltimaNota]
   },
   watch: {
     $route: function (to, from) {
-      this.superacao = this.superacoes[to.params.id]
+      const idSuperacao = to.params.id
+      this.superacao = this.superacoes[idSuperacao]
+      this.idUltimaNota = this.superacoes[idSuperacao].notas.length - 1
+      this.notaAtual = this.superacoes[idSuperacao].notas[this.idUltimaNota]
+    },
+    superacoes: {
+      handler (to) {
+        this.idUltimaNota = this.superacao.notas.length - 1
+        this.notaAtual = this.superacao.notas[this.idUltimaNota]
+      },
+      deep: true
     }
   },
   methods: {
@@ -69,7 +81,9 @@ export default {
     addNota (mensagem) {
       const data = new Date()
       this.superacao.notas.push({
-        data: `${String(data.getDate()).padStart(2, '0')}/${String(data.getMonth() + 1).padStart(2, '0')}/${data.getFullYear()}`,
+        ano: String(data.getFullYear()),
+        mes: String(data.getMonth() + 1),
+        dia: String(data.getDate()),
         mensagem: mensagem
       })
     }

@@ -10,7 +10,7 @@
         <input class="input" type="text" v-model="nomeSuperacao" name="nomeSuperacao"/>
         <label>Cor:</label>
         <input class="input" type="color" v-model="corSuperacao" name="corSuperacao"/>
-        <button id="btn_add-superacao" @click.prevent="addSuperacao(nomeSuperacao, corSuperacao); $emit('close')">Criar</button>
+        <button class="modal_form__btn" @click.prevent="addSuperacao(nomeSuperacao, corSuperacao); $emit('close')">Criar</button>
       </form>
     </div>
   </div>
@@ -20,6 +20,7 @@
 .wrapper_modal
   width: 100%
   height: 100%
+  z-index: 9999
   display: flex
   justify-content: center
   align-items: center
@@ -69,7 +70,7 @@
     gap: 15px
     padding: 20px
 
-    #btn_add-superacao
+    .modal_form__btn
       width: 55.555%
       height: 60px
       background-color: #12103f

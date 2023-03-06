@@ -13,7 +13,7 @@
       <router-link :to="`/superacao/${i}`" class="superacao_card__nome">{{superacao.nome}}</router-link>
       <button @click="removeSuperacao(i)" class="superacao__remove">X</button>
     </div>
-    <button id="btn__superacao" @click="$emit('showModalAddSuperacao')">Adicionar</button>
+    <button class="btn__add" @click="$emit('showModalAddSuperacao')">Adicionar</button>
   </div>
 </template>
 
@@ -35,7 +35,7 @@
   border-left-width: 15px
   border-left-style: solid
 
-#btn__superacao
+.btn__add
   width: 175px
   height: 55px
   margin: 0 auto
