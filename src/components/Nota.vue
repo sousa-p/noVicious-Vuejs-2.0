@@ -9,7 +9,9 @@
       </div>
     </div>
     <div class="nota_content">
-      <button v-if="nota.mensagem" @click="$emit('excluirNota')">X</button>
+      <button v-if="nota.mensagem" @click="$emit('excluirNota')">
+        <ion-icon name="trash-bin"></ion-icon>
+      </button>
       <p v-if="nota.mensagem">{{ nota.mensagem }}</p>
       <p v-else>Não há notas. Que tal adicionar uma?</p>
     </div>

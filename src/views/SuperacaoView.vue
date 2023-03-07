@@ -8,7 +8,9 @@
     <div class="superacao">
       <div class="header_superacao">
         <h1>{{ superacao.nome }}</h1>
-        <router-link :to="`/`">Voltar</router-link>
+        <router-link :to="`/`">
+          <ion-icon name="arrow-undo" size="large"></ion-icon>
+        </router-link>
       </div>
       <NotaComponent
         v-if="superacao.notas.length === 0"
@@ -31,6 +33,9 @@
 </template>
 
 <style lang="sass">
+ion-icon
+  color: #000
+
 .superacao
   width: 100%
   max-height: 100%

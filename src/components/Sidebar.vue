@@ -34,6 +34,9 @@
   font-size: 1.6em
 
 #frase
+  display: flex
+  align-items: center
+  justify-content: center
   min-height: 100px
   line-height: 25px
   text-align: center

@@ -28,6 +28,9 @@ $shadow: 0px 0px 10px rgba(0,0,0,0.5)
   box-sizing: border-box
   font-family: 'Courier New', Courier, monospace
 
+ion-icon
+  font-size: 1.2em
+
 #app
   width: 100vw
   height: 100vh

@@ -3,7 +3,9 @@
     <div class="modal">
       <div class="modal_header">
         <p>Nova Superação</p>
-        <button class="modal_btn__fechar" @click="$emit('close')">X</button>
+        <button class="modal_btn__fechar" @click="$emit('close')">
+          <ion-icon name="close"></ion-icon>
+        </button>
       </div>
       <form class="modal_form">
         <label>Superação:</label>

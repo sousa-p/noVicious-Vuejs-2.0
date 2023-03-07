@@ -3,7 +3,9 @@
     <div class="modal">
       <div class="modal_header">
         <p>Nota</p>
-        <button class="modal_btn__fechar" @click="$emit('close')">X</button>
+        <button class="modal_btn__fechar" @click="$emit('close')">
+          <ion-icon name="close"></ion-icon>
+        </button>
       </div>
       <form class="modal_form">
         <label for="mensagemNota">Digite sua nota:</label>

@@ -10,8 +10,12 @@
       v-for="(superacao, i) in superacoes"
       :key="i"
     >
-      <router-link :to="`/superacao/${i}`" class="superacao_card__nome">{{superacao.nome}}</router-link>
-      <button @click="removeSuperacao(i)" class="superacao__remove">X</button>
+      <router-link :to="`/superacao/${i}`" class="superacao_card__nome">
+        {{superacao.nome}}
+      </router-link>
+      <button @click="removeSuperacao(i)" class="superacao__remove">
+        <ion-icon name="trash-bin"></ion-icon>
+      </button>
     </div>
     <button class="btn__add" @click="$emit('showModalAddSuperacao')">Adicionar</button>
   </div>
@@ -24,6 +28,7 @@
 .superacao_card
   display: flex
   justify-content: space-between
+  align-items: center
   margin: 0 auto
   flex-direction: row
   padding: 15px 25px
@@ -35,6 +40,10 @@
   border-left-width: 15px
   border-left-style: solid
 
+  .superacao_card__nome
+    color: #000
+    text-decoration: none
+    font-size: 1.2em
 .btn__add
   width: 175px
   height: 55px
