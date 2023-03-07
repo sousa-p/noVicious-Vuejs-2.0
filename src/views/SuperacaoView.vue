@@ -10,11 +10,15 @@
         <h1>{{ superacao.nome }}</h1>
         <router-link :to="`/`">Voltar</router-link>
       </div>
-      <p
+      <NotaComponent
         v-if="superacao.notas.length === 0"
-      >
-        Não há notas nesta superação. Que tal começar com uma?
-      </p>
+        :key="0"
+        :nota="{
+          ano: String(data.getFullYear()),
+          mes: String(data.getMonth() + 1),
+          dia: String(data.getDate())
+        }"
+      />
       <NotaComponent
         v-else
         :key="idUltimaNota"
@@ -34,6 +38,10 @@
   display: flex
   flex-direction: column
 
+  .header_superacao
+    display: flex
+    justify-content: space-between
+    margin-bottom: 30px
 </style>
 
 <script>
@@ -58,6 +66,7 @@ export default {
     this.superacao = this.superacoes[idSuperacao]
     this.idUltimaNota = this.superacoes[idSuperacao].notas.length - 1
     this.notaAtual = this.notaAtual = this.superacoes[idSuperacao].notas[this.idUltimaNota]
+    this.data = new Date()
   },
   watch: {
     $route: function (to, from) {
@@ -65,11 +74,13 @@ export default {
       this.superacao = this.superacoes[idSuperacao]
       this.idUltimaNota = this.superacoes[idSuperacao].notas.length - 1
       this.notaAtual = this.superacoes[idSuperacao].notas[this.idUltimaNota]
+      this.data = new Date()
     },
     superacoes: {
       handler (to) {
         this.idUltimaNota = this.superacao.notas.length - 1
         this.notaAtual = this.superacao.notas[this.idUltimaNota]
+        this.data = new Date()
       },
       deep: true
     }
@@ -79,11 +90,11 @@ export default {
       this.superacao.notas.splice(i, 1)
     },
     addNota (mensagem) {
-      const data = new Date()
+      this.data = new Date()
       this.superacao.notas.push({
-        ano: String(data.getFullYear()),
-        mes: String(data.getMonth() + 1),
-        dia: String(data.getDate()),
+        ano: String(this.data.getFullYear()),
+        mes: String(this.data.getMonth() + 1),
+        dia: String(this.data.getDate()),
         mensagem: mensagem
       })
     }

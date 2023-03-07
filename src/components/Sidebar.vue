@@ -2,9 +2,7 @@
   <div class="Sidebar">
     <p id="logo">No vicious</p>
     <p id="frase">
-      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-      XXXXXXXXXXXXXXXXXXXXXXXXX
-      XXXXXXXX
+      "{{ fraseMotivacional }}"
     </p>
     <div id="wrapper_superacoes">
       <p>
@@ -36,6 +34,7 @@
   font-size: 1.6em
 
 #frase
+  min-height: 100px
   line-height: 25px
   text-align: center
 
@@ -61,8 +60,14 @@
 </style>
 
 <script>
+import frases from '@/frases.json'
 export default {
   name: 'SidebarComponent',
-  props: ['superacoes']
+  props: ['superacoes'],
+  data () {
+    return {
+      fraseMotivacional: frases[Math.floor(Math.random() * frases.length)].frase
+    }
+  }
 }
 </script>

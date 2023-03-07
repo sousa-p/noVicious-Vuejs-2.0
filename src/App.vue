@@ -40,7 +40,7 @@ main
 
 .wrapper
   width: 100%
-  padding: 0 5%
+  padding: 2.5% 2.5% 0 2.5%
   display: flex
   flex-direction: column
 
