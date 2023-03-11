@@ -12,7 +12,6 @@
       @showModalAddSuperacao="showModalAddSuperacao = true"
       :superacoes="superacoes"
       :removeSuperacao="removeSuperacao"
-
     />
   </main>
 </template>
@@ -30,6 +29,10 @@ $shadow: 0px 0px 10px rgba(0,0,0,0.5)
 
 ion-icon
   font-size: 1.2em
+  transition: .25s all linear
+
+ion-icon:hover
+  color: #99ffff
 
 #app
   width: 100vw

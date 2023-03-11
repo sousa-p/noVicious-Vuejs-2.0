@@ -1,7 +1,9 @@
 <template>
   <div class="nota">
     <div class="nota_header">
-      <input type="date" name="data" id="data">
+      <div>
+        <input type="date" name="data" id="data">
+      </div>
       <div class="data_nota-atual">
         <p id="dia">{{ nota.dia.padStart(2, '0') }}</p>
         <p id="mes">{{ nota.mes.padStart(2, '0') }}</p>

@@ -8,10 +8,31 @@
         </button>
       </div>
       <form class="modal_form">
-        <label>Superação:</label>
-        <input class="input" type="text" v-model="nomeSuperacao" name="nomeSuperacao"/>
-        <label>Cor:</label>
-        <input class="input" type="color" v-model="corSuperacao" name="corSuperacao"/>
+        <div class="form-group">
+          <label>Superação:</label>
+          <input class="input" type="text" v-model="nomeSuperacao" name="nomeSuperacao"/>
+        </div>
+        <div class="form-group">
+
+          <label>Cor:</label>
+          <div class="wrapper_colors">
+            <div class="color" @click="setColor('#ff9400')" style="background-color: #ff9400;"></div>
+            <div class="color" @click="setColor('#ffa500')" style="background-color: #ffa500;"></div>
+            <div class="color" @click="setColor('#ffd700')" style="background-color: #ffd700;"></div>
+            <div class="color" @click="setColor('#e3ff00')" style="background-color: #e3ff00;"></div>
+            <div class="color" @click="setColor('#c1ff00')" style="background-color: #c1ff00;"></div>
+            <div class="color" @click="setColor('#9eff00')" style="background-color: #9eff00;"></div>
+            <div class="color" @click="setColor('#00ff8c')" style="background-color: #00ff8c;"></div>
+            <div class="color" @click="setColor('#00ffc7')" style="background-color: #00ffc7;"></div>
+            <div class="color" @click="setColor('#00ffed')" style="background-color: #00ffed;"></div>
+            <div class="color" @click="setColor('#00c3ff')" style="background-color: #00c3ff;"></div>
+            <div class="color" @click="setColor('#009bff')" style="background-color: #009bff;"></div>
+            <div class="color" @click="setColor('#005eff')" style="background-color: #005eff;"></div>
+            <div class="color" @click="setColor('#2900ff')" style="background-color: #2900ff;"></div>
+            <div class="color" @click="setColor('#4a00ff')" style="background-color: #4a00ff;"></div>
+            <div class="color" @click="setColor('#6700ff')" style="background-color: #6700ff;"></div>
+          </div>
+        </div>
         <button class="modal_form__btn" @click.prevent="addSuperacao(nomeSuperacao, corSuperacao); $emit('close')">Criar</button>
       </form>
     </div>
@@ -19,6 +40,21 @@
 </template>
 
 <style lang="sass">
+.wrapper_colors
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+  justify-content: space-between
+
+  .color
+    width: 50px
+    height: 35px
+    border-radius: 5px
+    box-shadow: 0 0 5px #00000030
+    cursor: pointer
+  .selecionado
+    outline: 3px dashed #ff000085 !important
+
 .wrapper_modal
   width: 100%
   height: 100%
@@ -69,8 +105,14 @@
     height: 90%
     display: flex
     flex-direction: column
-    gap: 15px
+    gap: 50px
     padding: 20px
+
+    .form-group
+      width: 100%
+      display: flex
+      gap: 25px
+      flex-direction: column
 
     .modal_form__btn
       width: 55.555%
@@ -91,7 +133,17 @@ export default {
   data () {
     return {
       nomeSuperacao: '',
-      corSuperacao: '#000000'
+      corSuperacao: '#000000',
+      ultimoSelecionado: null
+    }
+  },
+
+  methods: {
+    setColor (color) {
+      if (this.ultimoSelecionado) this.ultimoSelecionado.classList.remove('selecionado')
+      event.target.classList.add('selecionado')
+      this.ultimoSelecionado = event.target
+      this.corSuperacao = color
     }
   }
 }

@@ -44,6 +44,7 @@
     color: #000
     text-decoration: none
     font-size: 1.2em
+
 .btn__add
   width: 175px
   height: 55px
@@ -52,10 +53,14 @@
   padding: 20px 50px
   border: none
   border-radius: 5px
-  background: green
+  background: #018040
   color: #fff
   font-weight: bolder
   text-transform: uppercase
+  transition: .5s all linear
+
+.btn__add:hover
+  background: #016500
 
 .superacao__remove
   cursor: pointer

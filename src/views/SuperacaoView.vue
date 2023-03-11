@@ -32,9 +32,12 @@
   </div>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 ion-icon
   color: #000
+
+ion-icon:hover
+  color: #303030
 
 .superacao
   width: 100%
